@@ -1,4 +1,4 @@
-name: donkey
+name: donkey_fresh
 
 channels:
   - defaults
@@ -36,13 +36,9 @@ dependencies:
   - plotly
   - pyyaml
   - fastai
-  - pynmea2
-  - pyserial
-  - utm
   - pip:
     - tensorflow==2.2.0
-    - git+https://github.com/autorope/keras-vis.git
+#    - git+https://github.com/autorope/keras-vis.git
     - simple-pid
-    - opencv-python-headless
+    - opencv-python-headless<4.3
     - moviepy
-
