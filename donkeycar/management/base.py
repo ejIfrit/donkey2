@@ -89,11 +89,13 @@ class CreateCar(BaseCommand):
         myconfig_template_path = os.path.join(TEMPLATES_PATH, 'myconfig.py')
         train_template_path = os.path.join(TEMPLATES_PATH, 'train.py')
         calibrate_template_path = os.path.join(TEMPLATES_PATH, 'calibrate.py')
+        playback_template_path = os.path.join(TEMPLATES_PATH, 'playback.py')
         car_app_path = os.path.join(path, 'manage.py')
         car_config_path = os.path.join(path, 'config.py')
         mycar_config_path = os.path.join(path, 'myconfig.py')
         train_app_path = os.path.join(path, 'train.py')
         calibrate_app_path = os.path.join(path, 'calibrate.py')
+        playback_app_path = os.path.join(path, 'playback.py')
 
         if os.path.exists(car_app_path) and not overwrite:
             print('Car app already exists. Delete it and rerun createcar to replace.')
@@ -121,6 +123,14 @@ class CreateCar(BaseCommand):
             print("Copying calibrate script. Adjust these before starting your car.")
             shutil.copyfile(calibrate_template_path, calibrate_app_path)
             os.chmod(calibrate_app_path, stat.S_IRWXU)
+
+        if os.path.exists(playback_app_path) and not overwrite:
+            print('Palyback already exists. Delete it and rerun createcar to replace.')
+        else:
+            print("Copying playback script. Adjust these before starting your car.")
+            shutil.copyfile(playback_template_path, playback_app_path)
+            os.chmod(playback_app_path, stat.S_IRWXU)
+
 
         if not os.path.exists(mycar_config_path):
             print("Copying my car config overrides")
